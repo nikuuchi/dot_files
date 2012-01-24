@@ -49,7 +49,6 @@ alias sd='pushd'
 alias pd='popd'
 
 alias ema='TERM=xterm-256color emacs -nw'
-#alias emd='ema --daemon'
 alias em='TERM=xterm-256color emacsclient -nw'
 
 alias tmux='TERM=xterm-256color tmux'
@@ -62,8 +61,4 @@ alias ifconfig='/sbin/ifconfig'
  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 PATH=$PATH:/opt/eclipse:$HOME/.cabal/bin:$HOME/.bin:/opt/firefox
-
-
-EDITOR=emclientnw
-export EDITOR
 
