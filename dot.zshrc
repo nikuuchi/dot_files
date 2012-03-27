@@ -62,3 +62,5 @@ alias ifconfig='/sbin/ifconfig'
 
 PATH=$PATH:/opt/eclipse:$HOME/.cabal/bin:$HOME/.bin:/opt/firefox
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
