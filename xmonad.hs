@@ -70,5 +70,5 @@ main = do
        `additionalKeys`
        [ ((modm, xK_a), runOrRaise "emacs" (className =? "Emacs"))
        , ((modm, xK_s), runOrRaise "gnome-terminal" (className =? "Gnome-terminal"))
-       , ((modm, xK_d), runOrRaise "chrome" (className =? "Google-Chrome"))
+       , ((modm, xK_d), runOrRaise "google-chrome" (className =? "Google-Chrome"))
        ]
