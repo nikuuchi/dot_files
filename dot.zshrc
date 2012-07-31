@@ -10,8 +10,14 @@ zstyle :compinstall filename '$HOME/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-
-
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '(%s)-[%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
 
 # If this is an xterm set the title to user@host:dir
 autoload colors
@@ -19,7 +25,7 @@ colors
 PROMPT="%{${fg[cyan]}%}zsh> %{${reset_color}%}"
 PROMPT2="%{${fg[blue]}%}%_> %{${reset_color}%}"
 SPROMPT="%{${fg[red]}%}correct: %R -> %r [nyae]? %{${reset_color}%}"
-RPROMPT="%{${fg[cyan]}%}[%~]%{${reset_color}%}"
+RPROMPT="%1(v|%F{green}%1v%f|) %{${fg[cyan]}%}[%~]%{${reset_color}%}"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -33,12 +39,14 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 # some git aliases
-alias gl='git pull'
-alias gp='git push'
-alias gst='git status'
-alias glo='git log -p'
-alias gm='git commit'
-alias ga='git add .'
+alias g='git'
+alias gl='g pull'
+alias gp='g push'
+alias gst='g status'
+alias glo='g log -p'
+alias gm='g commit'
+alias ga='g add .'
+alias gd='g diff'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -90,3 +98,5 @@ export PERL_MM_OPT="INSTALL_BASE=/home/atsushi/perl5";
 export PERL5LIB="/home/atsushi/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:/home/atsushi/perl5/lib/perl5";
 export PATH="/home/atsushi/perl5/bin:$PATH";
 
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
