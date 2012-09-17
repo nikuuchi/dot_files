@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/uchida/dev/konoha/minikonoha/package/jansson'
+let g:netrw_dirhist_2='/home/uchida/dev/konoha/minikonoha/module/msgc'
+let g:netrw_dirhist_3='/home/uchida/dev/konoha/minikonoha/module'
+let g:netrw_dirhist_4='/home/uchida/dev/konoha/minikonoha'
+let g:netrw_dirhist_5='/home/uchida/dev/konoha/minikonoha/module'
+let g:netrw_dirhist_6='/home/uchida/dev/konoha/minikonoha/module/snapshotgc'
