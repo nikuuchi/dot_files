@@ -11,8 +11,14 @@ zstyle :compinstall filename '$HOME/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-
-
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '(%s)-[%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
 
 # If this is an xterm set the title to user@host:dir
 autoload colors
@@ -45,12 +51,13 @@ alias egrep='egrep --color=auto'
 fi
 # some git aliases
 alias g='git'
-alias gl='git pull'
-alias gp='git push'
-alias gst='git status'
-alias glo='git log -p'
-alias gm='git commit'
-alias ga='git add .'
+alias gl='g pull'
+alias gp='g push'
+alias gst='g status'
+alias glo='g log -p'
+alias gm='g commit'
+alias ga='g add .'
+alias gd='g diff'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -113,4 +120,9 @@ export QT_IM_MODULE=ibus
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+<<<<<<< HEAD
 export PATH=/home/uchida/.cabal/bin:$PATH
+=======
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+>>>>>>> 919688948428b9b9853d04c3c7860a9fbe46ad66
