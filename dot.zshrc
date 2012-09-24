@@ -1,4 +1,3 @@
-/usr/bin/xset b off
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -118,11 +117,6 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
 
-<<<<<<< HEAD
 export PATH=/home/uchida/.cabal/bin:$PATH
-=======
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
->>>>>>> 919688948428b9b9853d04c3c7860a9fbe46ad66
