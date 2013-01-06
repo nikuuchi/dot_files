@@ -9,16 +9,6 @@ zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats '(%s)-[%b]'
-zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
-precmd () {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-}
-
 # If this is an xterm set the title to user@host:dir
 autoload colors
 colors
@@ -32,7 +22,7 @@ precmd () {
 }
 
 RPROMPT="%1(v|%F{green}%1v%f|)"
-PROMPT="%{${fg[cyan]}%}zsh> %{${reset_color}%}"
+PROMPT="%{${fg[cyan]}%}vm@%m> %{${reset_color}%}"
 PROMPT2="%{${fg[blue]}%}%_> %{${reset_color}%}"
 SPROMPT="%{${fg[red]}%}correct: %R -> %r [nyae]? %{${reset_color}%}"
 RPROMPT="%1(v|%F{green}%1v%f|) %{${fg[cyan]}%}[%~]%{${reset_color}%}"
@@ -57,6 +47,7 @@ alias glo='g log -p'
 alias gm='g commit'
 alias ga='g add .'
 alias gd='g diff'
+alias tig='TERM=xterm-color tig'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -81,8 +72,11 @@ alias tmuxa='tmux attach'
 alias tmua='tmux attach'
 alias tma='tmux attach'
 alias ifconfig='/sbin/ifconfig'
-alias open='gnome-open'
+alias open='xdg-open'
 
+alias v='vim'
+alias vi='vim'
+alias vr='vim -R'
 
 # nvm と指定されたバージョンの Node.js がインストール済みの場合だけ
 # 設定を有効にする
@@ -117,6 +111,7 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
-
-export PATH=/home/uchida/.cabal/bin:$PATH
+eval "$(rbenv init -)"
+source ~/.nvm/nvm.sh
+export PATH=/home/uchida/.cabal/bin:~/.bin:$PATH
+export TERM=xterm-256color
