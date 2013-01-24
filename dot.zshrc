@@ -22,10 +22,11 @@ precmd () {
 }
 
 RPROMPT="%1(v|%F{green}%1v%f|)"
-PROMPT="%{${fg[cyan]}%}vm@%m> %{${reset_color}%}"
+PROMPT="%{${fg[yellow]}%}%n@vps> %{${reset_color}%}"
 PROMPT2="%{${fg[blue]}%}%_> %{${reset_color}%}"
 SPROMPT="%{${fg[red]}%}correct: %R -> %r [nyae]? %{${reset_color}%}"
 RPROMPT="%1(v|%F{green}%1v%f|) %{${fg[cyan]}%}[%~]%{${reset_color}%}"
+setopt transient_rprompt
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -78,40 +79,12 @@ alias v='vim'
 alias vi='vim'
 alias vr='vim -R'
 
-# nvm と指定されたバージョンの Node.js がインストール済みの場合だけ
-# 設定を有効にする
-if [[ -f ~/.nvm/nvm.sh ]]; then
-source ~/.nvm/nvm.sh
-
-if which nvm >/dev/null 2>&1 ;then
-_nodejs_use_version="v0.4.0"
-if nvm ls | grep -F -e "${_nodejs_use_version}" >/dev/null 2>&1 ;then
-nvm use "${_nodejs_use_version}" >/dev/null
-fi
-unset _nodejs_use_version
-fi
-fi
-
-export XIM=ibus
-export XIM_PROGRAM=/usr/bin/ibus-daemon
-export XIM_ARGS="--xim"
-export XMODIFIERS="@im=ibus"
-export GTK_IM_MODULE="xim"
-export QT_IM_MODULE="xim"
-
-
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
 	export TERM='xterm-256color'
 else
 	export TERM='xterm-color'
 fi
 
-export GTK_IM_MODULE_FILE=/etc/gtk-2.0/gtk.immodules
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-source ~/.nvm/nvm.sh
-export PATH=/home/uchida/.cabal/bin:~/.bin:$PATH
 export TERM=xterm-256color
+
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
